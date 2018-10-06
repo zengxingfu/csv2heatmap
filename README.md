@@ -15,6 +15,8 @@ cd csv2heatmap
 
 Then, Copy all `csv` files to the `/data` directory:
 
+⚠️The header of the csv file needs to be defined like this: `longitude,latitude,play_count_poi`.
+
 ```bash
 cp **/*.csv /data/*.csv
 ```
