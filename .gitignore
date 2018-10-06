@@ -1,5 +1,6 @@
 dist
 data/*.csv
 data/archive/*.csv
+data/cities/*.csv
 *.pyc
 .DS_Store

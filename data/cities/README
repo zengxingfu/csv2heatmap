@@ -1,0 +1,3 @@
+全国数据（仅有城市名或区县名）数据放在这个文件夹。
+csv 编码 utf-8
+csv headers: address,play_count_poi

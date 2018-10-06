@@ -6,14 +6,14 @@ Generate heatmap from csv data.
 
 Quick example.
 
-First, Clone or download this repository:
+First, clone or download this repository:
 
 ```bash
 git clone https://github.com/zengxingfu/csv2heatmap.git
 cd csv2heatmap
 ```
 
-Then, Copy all `csv` files to the `/data` directory:
+Then, copy all `csv` files to the `/data` directory:
 
 ⚠️The header of the csv file needs to be defined like this: `longitude,latitude,play_count_poi`.
 
@@ -63,4 +63,33 @@ CONF = {
     # 最大值（体现为红色）
     'max': 5000000
 }
+```
+
+## Toolkit
+
+### geocode
+
+Copy the original csv file to the `/data/cities` directory.
+
+⚠️The header of the csv file needs to be defined like this: `address,play_count_poi`.
+
+```bash
+python3 script/geo.py
+```
+
+The new standard csv file will be saved in the `/data/` directory.
+
+Example:
+
+| **longitude**  | **latitude** | **play_count_poi** | **address** |
+| -------------- | ------------ | ------------------ | ----------- |
+| **95.595761**  | 31.412405    | 181963             | 丁青县      |
+| **105.305138** | 27.298494    | 5842683            | 七星关区    |
+| **110.317826** | 25.252701    | 1741160            | 七星区      |
+| ……             |              |                    |             |
+
+Just run:
+
+```bash
+python3 run.py
 ```
