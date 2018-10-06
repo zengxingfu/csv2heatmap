@@ -1,0 +1,5 @@
+dist
+data/*.csv
+data/archive/*.csv
+*.pyc
+.DS_Store
