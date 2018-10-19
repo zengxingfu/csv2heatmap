@@ -3,6 +3,7 @@ import csv
 from json import dumps
 import os
 import shutil
+from config import CONF
 
 ROOT = os.getcwd()
 
@@ -19,7 +20,7 @@ class HeatmapMaker(object):
 
     def gen_json(self, csv_file, config):
         data = []
-        with open(csv_file, 'r') as cf:
+        with open(csv_file, 'r', encoding='utf-8') as cf:
             reader = csv.reader(cf)
             for row in reader:
                 if row[2] == config['poi']:
@@ -51,6 +52,17 @@ class HeatmapMaker(object):
         with open(conf_path, 'w') as cf:
             cf.write('var CONF = ')
             cf.write(dumps(config))
+
+        # 写入 style.css
+        style_path = os.path.join(dist_path, 'style.css')
+        with open(style_path, 'w') as sf:
+            if CONF['hide_map_element']:
+                sf.write(
+                    '''#container > div.amap-maps > div > div.amap-layers > canvas.amap-layer,#container > div.amap-maps > div > div.amap-layers > canvas.amap-labels { display: none !important; }
+                    ''')
+            else:
+                sf.write('''#container > div.amap-maps > div > div.amap-layers > canvas.amap-layer,#container > div.amap-maps > div > div.amap-layers > canvas.amap-labels { }
+                ''')
         # print(json_file, 'generated!')
 
     def archive_csv(self, csv_file):
