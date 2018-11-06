@@ -3,7 +3,8 @@ import csv
 from json import dump
 import os
 import requests
-from main import ROOT
+
+ROOT = os.getcwd()
 
 
 def geocode(address):
